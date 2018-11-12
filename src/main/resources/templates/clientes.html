@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"  
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Listado de clientes</title>
+</head>
+<body>
+	<h1>Listado de clientes</h1>
+	
+	<div>
+		<form method="get" action="#" th:action="@{/clientes/buscar}">
+			<label for="tipoClienteSelected">Tipo de cliente</label>
+			<select id="tipoClienteSelected" name="tipoClienteSelected" th:field="${tipoClienteSelected}">
+				<option value="0" th:text="---"></option>
+				<option th:each="tc : ${tipoClientes}" th:value="${tc.id}" th:text="${tc.descripcion}"></option>
+			</select>
+			<input type="submit" value="Filtrar"/>
+		</form>
+	</div>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>Id.</th>
+				<th>Nombre</th>
+				<th>Dirección</th>
+				<th>Tipo de cliente</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="c : ${clientes}">
+				<td th:text="${c.id}">id</td>
+				<td th:text="${c.nombre}"></td>
+				<td th:text="${c.direccion}"></td>
+				<td th:text="${c.tipoCliente.descripcion}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

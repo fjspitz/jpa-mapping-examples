@@ -1,0 +1,41 @@
+insert into tipo_cliente (descripcion) values ('Minorista')
+insert into tipo_cliente (descripcion) values ('Mayorista')
+insert into tipo_cliente (descripcion) values ('Corporativo')
+insert into tipo_cliente (descripcion) values ('Exterior')
+
+insert into cliente (nombre, direccion, id_tipo_cliente) values ('Cliente 1', 'Direccion 1', 1)
+insert into cliente (nombre, direccion, id_tipo_cliente) values ('Cliente 2', 'Direccion 2', 3)
+insert into cliente (nombre, direccion, id_tipo_cliente) values ('Cliente 3', 'Direccion 3', 2)
+insert into cliente (nombre, direccion, id_tipo_cliente) values ('Cliente 4', 'Direccion 4', 3)
+insert into cliente (nombre, direccion, id_tipo_cliente) values ('Cliente 5', 'Direccion 5', 4)
+
+insert into categoria (descripcion) values ('Electrodomésticos')
+insert into categoria (descripcion) values ('Linea blanca')
+insert into categoria (descripcion) values ('Calzado')
+insert into categoria (descripcion) values ('Electrónica')
+insert into categoria (descripcion) values ('Retail')
+
+insert into proveedor (nombre, contacto, direccion) values ('Proveedor 1', 'Contacto 1', 'Direccion 1')
+insert into proveedor (nombre, contacto, direccion) values ('Proveedor 2', 'Contacto 2', 'Direccion 2')
+insert into proveedor (nombre, contacto, direccion) values ('Proveedor 3', 'Contacto 3', 'Direccion 3')
+insert into proveedor (nombre, contacto, direccion) values ('Proveedor 4', 'Contacto 4', 'Direccion 4')
+insert into proveedor (nombre, contacto, direccion) values ('Proveedor 5', 'Contacto 5', 'Direccion 5')
+
+insert into proveedor_categoria (id_proveedor, id_categoria) values (1, 1)
+insert into proveedor_categoria (id_proveedor, id_categoria) values (1, 2)
+insert into proveedor_categoria (id_proveedor, id_categoria) values (2, 1)
+insert into proveedor_categoria (id_proveedor, id_categoria) values (3, 1)
+insert into proveedor_categoria (id_proveedor, id_categoria) values (4, 1)
+insert into proveedor_categoria (id_proveedor, id_categoria) values (5, 2)
+insert into proveedor_categoria (id_proveedor, id_categoria) values (5, 3)
+insert into proveedor_categoria (id_proveedor, id_categoria) values (5, 4)
+insert into proveedor_categoria (id_proveedor, id_categoria) values (3, 5)
+
+insert into producto (descripcion, id_proveedor, id_categoria, precio_unitario, unidades_stock, unidades_pedidas, flg_discontinuo) values 
+	('Producto 1', 1, 1, 10.0, 50, 20, 0)
+
+insert into empleado (nombre, id_jefe) values ('Empleado 1', null)
+insert into empleado (nombre, id_jefe) values ('Empleado 2', null)
+insert into empleado (nombre, id_jefe) values ('Empleado 3', null)
+insert into empleado (nombre, id_jefe) values ('Empleado 4', null)
+insert into empleado (nombre, id_jefe) values ('Empleado 5', 1)

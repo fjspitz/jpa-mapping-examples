@@ -1,19 +1,26 @@
 package ar.com.fjs.jpamappingexamples.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity
+@Entity(name="detalle_orden")
 public class OrdenItem {
 	@Id
+	@Column(name="id_detalle_orden")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int item;
-	private String descripcion;
-	private int cantidad;
 	@ManyToOne
-	@JoinColumn(name = "orden_id")
+	@JoinColumn(name = "id_orden")
 	private Orden orden;
+	@ManyToOne
+	@JoinColumn(name= "id_producto")
+	private Producto producto;
+	private int cantidad;
 	
 	public OrdenItem() {}
 
@@ -31,14 +38,6 @@ public class OrdenItem {
 
 	public void setItem(int item) {
 		this.item = item;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
 	}
 
 	public int getCantidad() {

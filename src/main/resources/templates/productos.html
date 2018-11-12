@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"  
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Listado de productos</title>
+</head>
+<body>
+	<h1>Listado de productos</h1>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>Id.</th>
+				<th>Descripción</th>
+				<th>Id. de proveedor</th>
+				<th>Nombre de proveedor</th>
+				<th>Categoría</th>
+				<th>Precio Unitario</th>
+				<th>Unidades en stock</th>
+				<th>Unidades comprometidas</th>
+				<th>Descontinuado</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="p : ${productos}">
+				<td th:text="${p.id}"></td>
+				<td th:text="${p.descripcion}"></td>
+				<td th:text="${p.proveedor.id}"></td>
+				<td th:text="${p.proveedor.nombre}"></td>
+				<td th:text="${p.categoria.descripcion}"></td>
+				<td th:text="${p.precioUnitario}"></td>
+				<td th:text="${p.unidadesEnStock}"></td>
+				<td th:text="${p.unidadesPedidas}"></td>
+				<td th:text="${p.discontinuo}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

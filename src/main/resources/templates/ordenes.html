@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"  
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Ordenes de clientes</title>
+	</head>
+	<body>
+		<h1>Listado de órdenes de clientes</h1>
+		
+		<div>
+			<label for="cboProveedor">Seleccione el proveedor: </label>
+			<select id="cboProveedor" th:field="*{proveedorSelected}">
+				<option value=""> -- </option>
+				<option th:each="p : ${proveedores}"
+					th:value="${p.id}"
+					th:utext="${p.nombre}"/>
+			</select>
+			<br/>
+			
+			<label for="cboCategoria">Seleccione la categoría: </label>
+			<select id="cboCategoria" th:field="*{categoriaSelected}">
+				<option value=""> -- </option>
+				<option th:each="c : ${categorias}"
+					th:value="${c.id}"
+					th:utext="${c.descripcion}"/>
+			</select>
+			<br/>
+			
+			<label for="cboProducto">Seleccione el producto: </label>
+			<select id="cboProducto" th:field="*{productoSelected}">
+				<option value=""> -- </option>
+				<option th:each="p : ${productos}"
+					th:value="${p.id}"
+					th:utext="${p.descripcion}"/>
+			</select>
+			<br/>
+			
+			<label for="cboClientes">Seleccione el cliente: </label>
+			<select id="cboClientes" th:field="*{clienteSelected}">
+				<option value=""> -- </option>
+				<option th:each="c : ${clientes}"
+					th:value="${c.id}"
+					th:utext="${c.nombre}"/>
+			</select>
+			<br/>
+			
+			<button>Filtrar</button>
+		</div>
+		
+		<table>
+			<thead>
+				<tr>
+					<th>Nro.</th>
+					<th>Cliente Id.</th>
+					<th>Nombre de cliente</th>
+					<th>Empleado Id.</th>
+					<th>Nombre del empleado</th>
+					<th>Fecha generada</th>
+					<th>Fecha entregada</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="o : ${ordenes}">
+					<td th:text="${o.id}"></td>
+					<td th:text="${o.cliente.id}"></td>
+					<td th:text="${o.cliente.nombre}"></td>
+					<td th:text="${o.empleado.id}"></td>
+					<td th:text="${o.empleado.nombre}"></td>
+					<td th:text="${#calendars.format(o.fechaGenerada, 'dd/MM/yyyy')}"></td>
+					<td th:text="${o.fechaEntregada}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

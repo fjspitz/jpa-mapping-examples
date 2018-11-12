@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"  
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Listado de proveedores</title>
+	</head>
+	
+	<body>
+		<h1>Listado de proveedores</h1>
+		
+		<p>Welcome to <span th:text="${appName}">Our App</span></p>
+		
+		<div>
+			<label for="cboProveedor">Seleccione el proveedor: </label>
+			<select id="cboProveedor" th:field="*{proveedorSelected}">
+				<option value=""> -- </option>
+				<option th:each="p : ${proveedores}"
+					th:value="${p.id}"
+					th:utext="${p.nombre}"/>
+			</select>
+			<button>Apriete aqui</button>
+		</div>
+		
+		<table>
+			<thead>
+				<tr>
+					<th>Id.</th>
+					<th>Nombre</th>
+					<th>Contacto</th>
+					<th>Direccion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="p : ${proveedores}">
+					<td th:text="${p.id}"></td>
+					<td th:text="${p.nombre}"></td>
+					<td th:text="${p.contacto}"></td>
+					<td th:text="${p.direccion}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
